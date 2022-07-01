@@ -1,14 +1,13 @@
 {
     "type": "library",
-    "name": "nguyenanhung/template-php-lib",
-    "description": "Template for repository helper, library - Basic, Simple and Lightweight",
+    "name": "tramtro/make-some-noise",
+    "description": "Make Some Noise",
     "keywords": [
-        "template",
         "helper",
         "library",
         "php"
     ],
-    "homepage": "https://github.com/nguyenanhung/template-php-lib",
+    "homepage": "https://github.com/tramtro/make-some-noise",
     "license": "MIT",
     "minimum-stability": "stable",
     "authors": [
@@ -20,11 +19,16 @@
         }
     ],
     "require": {
-        "php": ">=5.6"
+        "php": ">=5.6",
+        "nguyenanhung/yaheiphp": "^1.0",
+        "amnuts/opcache-gui": "^3.0 || ^2.0"
+    },
+    "require-dev": {
+        "kint-php/kint": "^3.0"
     },
     "autoload": {
         "psr-4": {
-            "nguyenanhung\\Libraries\\TemplateREPLACE\\": "src/"
+            "nguyenanhung\\TramTro\\MakeSomeNoise\\": "src/"
         },
         "files": [
             "helpers/helpers.php"
