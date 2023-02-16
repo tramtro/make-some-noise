@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.0.1] - 2023/02/16
+
+### Updated
+
+- [x] Updated Project
+
 ## [1.0.0] - 2022/07/01
 
 ### Added
