@@ -69,6 +69,32 @@ When using Ubuntu, this can be done via apt-get install php5-json.';
         );
     }
 
+    public static function selectedVersion($version, $is)
+    {
+        return $version === $is ? 'selected' : '';
+    }
+
+    public static function laravelVersionPicker($laravelVersion)
+    {
+        return '
+            <option value="11.0" ' . self::selectedVersion($laravelVersion, "11.0") . '>Laravel 11.0 - Latest</option>
+            <option value="10.0" ' . self::selectedVersion($laravelVersion, "10.0") . '>Laravel 10.x</option>
+            <option value="9.0" ' . self::selectedVersion($laravelVersion, "9.0") . '>Laravel 9.x</option>
+            <option value="8.0" ' . self::selectedVersion($laravelVersion, "8.0") . '>Laravel 8.x</option>
+            <option value="7.0" ' . self::selectedVersion($laravelVersion, "7.0") . '>Laravel 7.0</option>
+            <option value="6.0" ' . self::selectedVersion($laravelVersion, "6.0") . '>Laravel 6.0 LTS</option>
+            <option value="5.8" ' . self::selectedVersion($laravelVersion, "5.8") . '>Laravel 5.8</option>
+            <option value="5.7" ' . self::selectedVersion($laravelVersion, "5.7") . '>Laravel 5.7</option>
+            <option value="5.6" ' . self::selectedVersion($laravelVersion, "5.6") . '>Laravel 5.6</option>
+            <option value="5.5" ' . self::selectedVersion($laravelVersion, "5.5") . '>Laravel 5.5 LTS</option>
+            <option value="5.4" ' . self::selectedVersion($laravelVersion, "5.4") . '>Laravel 5.4</option>
+            <option value="5.3" ' . self::selectedVersion($laravelVersion, "5.3") . '>Laravel 5.3</option>
+            <option value="5.2" ' . self::selectedVersion($laravelVersion, "5.2") . '>Laravel 5.2</option>
+            <option value="5.1" ' . self::selectedVersion($laravelVersion, "5.1") . '>Laravel 5.1 LTS</option>
+            <option value="5.0" ' . self::selectedVersion($laravelVersion, "5.0") . '>Laravel 5.0</option>
+            <option value="4.2"' . self::selectedVersion($laravelVersion, "4.2") . ' >Laravel 4.2</option>';
+    }
+
     public static function serverRequirements()
     {
         return array(
@@ -358,10 +384,10 @@ When using Ubuntu, this can be done via apt-get install php5-json.';
     public static function showCheckPhpExtension($name = '', $result = '', $value = null)
     {
         if ( ! empty($value)) {
-            return '<p>' . $name . ' PHP Extension</p> ' . $result . ' (' . $value . ')';
+            return '<p>' . $name . ' PHP Extension ' . $result . ' (' . $value . ')</p>';
         }
 
-        return '<p>' . $name . ' PHP Extension</p> ' . $result;
+        return '<p>' . $name . ' PHP Extension ' . $result . '</p>';
     }
 
     public static function serverRequirementsPhpExtensionsDefaultCheck()
