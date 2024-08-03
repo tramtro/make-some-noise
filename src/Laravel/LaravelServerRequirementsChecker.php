@@ -427,10 +427,10 @@ When using Ubuntu, this can be done via apt-get install php5-json.';
             if (isset($serverRequirementsList[$laravelVersion][$extension])) {
                 if ($serverRequirementsList[$laravelVersion][$extension] === true) {
                     $extensionNeedEnabled = true;
-                    $extensionNeedMsg = $extension . ' need enabled';
+                    $extensionNeedMsg = '<strong>' . $extension . '</strong> need <strong>enabled</strong>';
                 } else {
                     $extensionNeedEnabled = false;
-                    $extensionNeedMsg = $extension . ' need disabled';
+                    $extensionNeedMsg = '<strong>' . $extension . '</strong> need <strong>disabled</strong>';
                 }
                 if ($extensionNeedEnabled === false && $requirements[$extension . '_enabled'] === false) {
                     $check = $resultMsg['ok'];
