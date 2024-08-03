@@ -408,6 +408,7 @@ When using Ubuntu, this can be done via apt-get install php5-json.';
 
     public static function serverRequirementsPhpVersionCheckResultMsg($laravelVersion)
     {
+        echo "PHP";
         $resultMsg = self::checkResultMsg();
         $serverRequirementsList = self::serverRequirements();
         $requirements = self::serverRequirementsCheck($laravelVersion);
@@ -421,6 +422,6 @@ When using Ubuntu, this can be done via apt-get install php5-json.';
             echo ">= " . $serverRequirementsList[$laravelVersion]['php'];
         }
 
-        echo " " . ($requirements['php_version'] ? $resultMsg['ok'] : $resultMsg['fail']);
+        echo " " . ($requirements['php_version'] ? $resultMsg['ok'] : $resultMsg['fail']) . (PHP_VERSION);
     }
 }
