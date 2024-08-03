@@ -384,10 +384,10 @@ When using Ubuntu, this can be done via apt-get install php5-json.';
     public static function showCheckPhpExtension($name = '', $result = '', $value = null)
     {
         if ( ! empty($value)) {
-            return '<p>' . $name . ' PHP Extension ' . $result . ' (' . $value . ')</p>';
+            return '<p>PHP Extension ' . $name . ' ' . $result . ' (' . $value . ')</p>';
         }
 
-        return '<p>' . $name . ' PHP Extension ' . $result . '</p>';
+        return '<p>PHP Extension ' . $name . ' ' . $result . '</p>';
     }
 
     public static function serverRequirementsPhpExtensionsDefaultCheck()
@@ -425,8 +425,19 @@ When using Ubuntu, this can be done via apt-get install php5-json.';
         $msg = '';
         foreach ($listExtensions as $extension) {
             if (isset($serverRequirementsList[$laravelVersion][$extension])) {
-                $check = $requirements[$extension . '_enabled'] ? $resultMsg['ok'] : $resultMsg['fail'];
-                $msg .= self::showCheckPhpExtension(strtoupper($extension), $check);
+                if ($serverRequirementsList[$laravelVersion][$extension] === true) {
+                    $extensionNeedEnabled = true;
+                    $extensionNeedMsg = $extension . ' need enabled';
+                } else {
+                    $extensionNeedEnabled = false;
+                    $extensionNeedMsg = $extension . ' need disabled';
+                }
+                if ($extensionNeedEnabled === false && $requirements[$extension . '_enabled'] === false) {
+                    $check = $resultMsg['ok'];
+                } else {
+                    $check = $requirements[$extension . '_enabled'] ? $resultMsg['ok'] : $resultMsg['fail'];
+                }
+                $msg .= self::showCheckPhpExtension($extensionNeedMsg, $check);
             }
         }
         return $msg . self::serverRequirementsPhpExtensionsDefaultCheck();
