@@ -360,7 +360,7 @@ When using Ubuntu, this can be done via apt-get install php5-json.';
         return '<p>' . $name . ' PHP Extension</p> ' . $result;
     }
 
-    public static function serverRequirementsCheckResult($laravelVersion)
+    public static function serverRequirementsPhpExtensionsCheckResult($laravelVersion)
     {
         $resultMsg = self::checkResultMsg();
         $serverRequirementsList = self::serverRequirements();
