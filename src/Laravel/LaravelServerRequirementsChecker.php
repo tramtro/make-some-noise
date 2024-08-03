@@ -424,7 +424,7 @@ When using Ubuntu, this can be done via apt-get install php5-json.';
         $listExtensions = self::serverRequirementsPhpExtensions();
         $msg = '';
         foreach ($listExtensions as $extension) {
-            if (isset($serverRequirementsList[$laravelVersion][$extension]) && $serverRequirementsList[$laravelVersion][$extension]) {
+            if (isset($serverRequirementsList[$laravelVersion][$extension])) {
                 $check = $requirements[$extension . '_enabled'] ? $resultMsg['ok'] : $resultMsg['fail'];
                 $msg .= self::showCheckPhpExtension(strtoupper($extension), $check);
             }
