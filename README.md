@@ -2,6 +2,8 @@
 
 # Make Some Noise
 
+1 ít thư viện dùng trong quá trình debug dự án
+
 ## Contact & Support
 
 If any question & request, please contact following information
