@@ -355,9 +355,39 @@ When using Ubuntu, this can be done via apt-get install php5-json.';
         return $requirements;
     }
 
-    public static function showCheckPhpExtension($name = '', $result = '')
+    public static function showCheckPhpExtension($name = '', $result = '', $value = null)
     {
+        if ( ! empty($value)) {
+            return '<p>' . $name . ' PHP Extension</p> ' . $result . ' (' . $value . ')';
+        }
+
         return '<p>' . $name . ' PHP Extension</p> ' . $result;
+    }
+
+    public static function serverRequirementsPhpExtensionsDefaultCheck()
+    {
+        $resultMsg = self::checkResultMsg();
+        $msg = self::showCheckPhpExtension(
+            'magic_quotes_gpc',
+            ! ini_get('magic_quotes_gpc') ? $resultMsg['ok'] : $resultMsg['fail'],
+            'value: ' . ini_get('magic_quotes_gpc')
+        );
+        $msg .= self::showCheckPhpExtension(
+            'register_globals',
+            ! ini_get('register_globals') ? $resultMsg['ok'] : $resultMsg['fail'],
+            'value: ' . ini_get('register_globals')
+        );
+        $msg .= self::showCheckPhpExtension(
+            'session.auto_start',
+            ! ini_get('session.auto_start') ? $resultMsg['ok'] : $resultMsg['fail'],
+            'value: ' . ini_get('session.auto_start')
+        );
+        $msg .= self::showCheckPhpExtension(
+            'mbstring.func_overload',
+            ! ini_get('mbstring.func_overload') ? $resultMsg['ok'] : $resultMsg['fail'],
+            'value: ' . ini_get('mbstring.func_overload')
+        );
+        return $msg;
     }
 
     public static function serverRequirementsPhpExtensionsCheckResult($laravelVersion)
@@ -370,9 +400,27 @@ When using Ubuntu, this can be done via apt-get install php5-json.';
         foreach ($listExtensions as $extension) {
             if (isset($serverRequirementsList[$laravelVersion][$extension]) && $serverRequirementsList[$laravelVersion][$extension]) {
                 $check = $requirements[$extension . '_enabled'] ? $resultMsg['ok'] : $resultMsg['fail'];
-                $msg .= self::showCheckPhpExtension('CURL', $check);
+                $msg .= self::showCheckPhpExtension(strtoupper($extension), $check);
             }
         }
-        return $msg;
+        return $msg . self::serverRequirementsPhpExtensionsDefaultCheck();
+    }
+
+    public static function serverRequirementsPhpVersionCheckResultMsg($laravelVersion)
+    {
+        $resultMsg = self::checkResultMsg();
+        $serverRequirementsList = self::serverRequirements();
+        $requirements = self::serverRequirementsCheck($laravelVersion);
+        if (is_array($serverRequirementsList[$laravelVersion]['php'])) {
+            $phpVersions = array();
+            foreach ($serverRequirementsList[$laravelVersion]['php'] as $operator => $version) {
+                $phpVersions[] = "{$operator} {$version}";
+            }
+            echo implode(" && ", $phpVersions);
+        } else {
+            echo ">= " . $serverRequirementsList[$laravelVersion]['php'];
+        }
+
+        echo " " . ($requirements['php_version'] ? $resultMsg['ok'] : $resultMsg['fail']);
     }
 }
