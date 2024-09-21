@@ -1,4 +1,9 @@
-[![Latest Stable Version](http://poser.pugx.org/tramtro/make-some-noise/v)](https://packagist.org/packages/tramtro/make-some-noise) [![Total Downloads](http://poser.pugx.org/tramtro/make-some-noise/downloads)](https://packagist.org/packages/tramtro/make-some-noise) [![Latest Unstable Version](http://poser.pugx.org/tramtro/make-some-noise/v/unstable)](https://packagist.org/packages/tramtro/make-some-noise) [![License](http://poser.pugx.org/tramtro/make-some-noise/license)](https://packagist.org/packages/tramtro/make-some-noise) [![PHP Version Require](http://poser.pugx.org/tramtro/make-some-noise/require/php)](https://packagist.org/packages/tramtro/make-some-noise)
+[![Latest Stable Version](https://img.shields.io/packagist/v/tramtro/make-some-noise.svg?style=flat-square)](https://packagist.org/packages/tramtro/make-some-noise)
+[![Total Downloads](https://img.shields.io/packagist/dt/tramtro/make-some-noise.svg?style=flat-square)](https://packagist.org/packages/tramtro/make-some-noise)
+[![Daily Downloads](https://img.shields.io/packagist/dd/tramtro/make-some-noise.svg?style=flat-square)](https://packagist.org/packages/tramtro/make-some-noise)
+[![Monthly Downloads](https://img.shields.io/packagist/dm/tramtro/make-some-noise.svg?style=flat-square)](https://packagist.org/packages/tramtro/make-some-noise)
+[![License](https://img.shields.io/packagist/l/tramtro/make-some-noise.svg?style=flat-square)](https://packagist.org/packages/tramtro/make-some-noise)
+[![PHP Version Require](https://img.shields.io/packagist/dependency-v/tramtro/make-some-noise/php)](https://packagist.org/packages/tramtro/make-some-noise)
 
 # Make Some Noise
 
